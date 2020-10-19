@@ -14,7 +14,6 @@ const validateForm = (schema) => {
 			req.body = validatedBody;
 			next();
 		} catch (err) {
-			console.log(err);
 			return res
 				.status(status.BAD_REQUEST)
 				.send({ success: false, message: err.errors });
