@@ -19,7 +19,7 @@ exports.post = async (req, res, next) => {
 
 		bcrypt.compare(password, user.password, (err, success) => {
 			if (!err && success) {
-				const token = jwt.sign({ email }, process.env.PASSPORT_SECRET, {
+				const token = jwt.sign({ userId: user._id }, process.env.PASSPORT_SECRET, {
 					expiresIn: process.env.JWT_EXPIRATION
 				});
 				return res.status(status.OK).send({ success: true, token });

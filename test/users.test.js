@@ -3,6 +3,7 @@ const { assert, expect } = require("chai");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const status = require("http-status");
+const jwt = require("jsonwebtoken");
 
 /** App import */
 const app = require("../app");
@@ -22,16 +23,41 @@ describe("Users", () => {
 		});
 	});
 
-	describe("/GET User", () => {
-		it("Should return 200 and object body", (done) => {
+	describe("/GET User", async () => {
+		let testUser = {};
+		before((done) => {
+			testUser = {
+				email: "testmail@gmail.com",
+				name: {
+					first: "John",
+					last: "Doe"
+				},
+				password: "123456"
+			};
+			User.create(testUser, (err, res) => {
+				testUser = res;
+				done();
+			});
+		});
+
+		it("Should return 200 and user info", (done) => {
+			const token = jwt.sign(
+				{ userId: testUser._id },
+				process.env.PASSPORT_SECRET,
+				{
+					expiresIn: process.env.JWT_EXPIRATION
+				}
+			);
 			chai
 				.request(app)
-				.get("/user")
+				.get("/user/me")
+				.set("Authorization", `Bearer ${token}`)
 				.end((err, res) => {
 					assert.equal(res.status, status.OK);
 					assert.isObject(res.body);
 					assert.property(res.body, "success");
-					assert.property(res.body, "message");
+					assert.property(res.body, "user");
+					assert.isNotEmpty(res.body.user);
 					done();
 				});
 		});
