@@ -35,15 +35,13 @@ describe("Token", () => {
 		it("Should login user and return 200 with token", (done) => {
 			chai
 				.request(app)
-				.post("/user/login")
+				.post("/token")
 				.send({ email: "testmail@gmail.com", password: "123456" })
 				.end((err, res) => {
 					assert.equal(res.status, status.OK);
 					assert.isObject(res.body);
 					assert.property(res.body, "success");
 					assert.property(res.body, "token");
-					assert.property(res.body, "user");
-					assert.isNotEmpty(res.body.user);
 					assert.isString(res.body.token);
 					done();
 				});

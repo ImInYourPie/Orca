@@ -1,5 +1,5 @@
 /** Import libraries */
-const { assert } = require("chai");
+const { assert, expect } = require("chai");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const status = require("http-status");
@@ -9,6 +9,9 @@ const app = require("../app");
 
 /** Schema import */
 const User = require("../models/user.model");
+
+/** String messages */
+const messages = require("../constants/messages");
 
 chai.use(chaiHttp);
 
@@ -51,7 +54,27 @@ describe("Users", () => {
 					assert.equal(res.status, status.BAD_REQUEST);
 					assert.isObject(res.body);
 					assert.property(res.body, "success");
+					assert.isArray(res.body.message);
 					assert.equal(res.body.success, false);
+					expect(res.body.message).to.include.members([messages.INVALID_EMAIL]);
+					done();
+				});
+		});
+
+		it("Should return 400, missing required email and password fields", (done) => {
+			chai
+				.request(app)
+				.post("/user/register")
+				.end((err, res) => {
+					assert.equal(res.status, status.BAD_REQUEST);
+					assert.isObject(res.body);
+					assert.isArray(res.body.message);
+					assert.property(res.body, "success");
+					assert.equal(res.body.success, false);
+					expect(res.body.message).to.include.members([
+						messages.EMPTY_EMAIL,
+						messages.EMPTY_PASSWORD
+					]);
 					done();
 				});
 		});

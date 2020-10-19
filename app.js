@@ -10,6 +10,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 /**
+ * Passport imports
+ */
+const passport = require("passport");
+const { applyPassportStrategy } = require("./config/passport");
+
+/**
  * Utils
  */
 
@@ -43,6 +49,7 @@ if (!isProd) mongoose.set("debug", true);
 /**
  * Libraries usage
  */
+applyPassportStrategy(passport);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

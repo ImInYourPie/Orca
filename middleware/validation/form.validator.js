@@ -10,10 +10,11 @@ const validateForm = (schema) => {
 	return async (req, res, next) => {
 		try {
 			const { body } = req;
-			const validatedBody = await schema.validate(body);
+			const validatedBody = await schema.validate(body, { abortEarly: false });
 			req.body = validatedBody;
 			next();
 		} catch (err) {
+			console.log(err);
 			return res
 				.status(status.BAD_REQUEST)
 				.send({ success: false, message: err.errors });
