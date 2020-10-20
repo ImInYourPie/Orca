@@ -36,12 +36,10 @@ const UserSchema = new Schema(
 		name: {
 			first: {
 				type: String,
-				required: true,
 				min: 1
 			},
 			last: {
 				type: String,
-				required: true,
 				min: 1
 			}
 		}

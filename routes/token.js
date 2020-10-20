@@ -7,9 +7,8 @@ const router = express.Router();
 const TokenController = require("../controllers/token");
 
 /** Middleware */
-const { validate } = require("../middleware/login.validator");
 
 /* POST token */
-router.post("/", validate, TokenController.post);
+router.post("/", TokenController.post);
 
 module.exports = router;

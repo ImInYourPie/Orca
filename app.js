@@ -10,6 +10,12 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 /**
+ * Passport imports
+ */
+const passport = require("passport");
+const { applyPassportStrategy } = require("./config/passport");
+
+/**
  * Utils
  */
 
@@ -25,14 +31,19 @@ const app = express();
  *  Node environment variables booleans
  */
 const isProd = process.env.NODE_ENV === "production";
-const isStaging = process.env.NODE_ENV === "staging";
 const isDev = process.env.NODE_ENV === "dev";
+const isStaging = process.env.NODE_ENV === "staging";
 const isTest = process.env.NODE_ENV === "test";
 
 /**
  * Database connection
  */
-mongoose.connect(process.env.TEST_DB_URI, {
+console.log(process.env.NODE_ENV);
+const connectionString = isDev ? process.env.DB_URI : process.env.TEST_DB_URI;
+
+console.log(connectionString);
+
+mongoose.connect(connectionString, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });
@@ -43,6 +54,7 @@ if (!isProd) mongoose.set("debug", true);
 /**
  * Libraries usage
  */
+applyPassportStrategy(passport);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

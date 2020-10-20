@@ -1,4 +1,4 @@
-/**  */
+/** Used for hashing password*/
 const SALT_ROUNDS = 10;
 
 const PASSWORD_LENGTH = {
