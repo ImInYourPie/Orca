@@ -7,6 +7,7 @@
 
 * node.js
 * npm
+* nodemon
 
 ## Project setup
 ```
