@@ -7,6 +7,7 @@
 
 * node.js
 * npm
+* mongoDB
 * nodemon
 
 ## Project setup
