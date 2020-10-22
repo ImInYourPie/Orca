@@ -25,5 +25,5 @@ npm run test
 ```
 
 ## Authors
-* **Mariana Moreira - marianacccmoreira@gmail.com**
+* **Mariana Moreira - marianaccmoreira@gmail.com**
 * **Miguel Melo - d.miguel.melo@gmail.com**
