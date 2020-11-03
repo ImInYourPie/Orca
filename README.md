@@ -1,26 +1,23 @@
-# Orca-API
-
-
-**These instructions will get you a copy of the project up and running on your computer.**
+# Orca
 
 ### Prerequisites
 
-* node.js
+* node.js >= 12.0.0
 * npm
 * mongoDB
 * nodemon
 
-## Project setup
+## Project setup (cd into directory)
 ```
 npm i
 ```
 
-### Runs and hot-reloads for development
+### Runs and hot-reloads for development (cd into directory)
 ```
 npm run start
 ```
 
-### Run your tests
+### Run your tests (cd into directory)
 ```
 npm run test
 ```
