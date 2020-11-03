@@ -1,0 +1,14 @@
+const MAX_SUMMARY_LENGTH = 100;
+
+const PRIORITY = {
+	HIGHEST: "HIGHEST",
+	HIGH: "HIGH",
+	MEDIUM: "MEDIUM",
+	LOW: "LOW",
+	LOWEST: "LOWEST"
+};
+
+module.exports = {
+	MAX_SUMMARY_LENGTH,
+	PRIORITY
+};
