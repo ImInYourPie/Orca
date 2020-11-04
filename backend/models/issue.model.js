@@ -13,6 +13,11 @@ const IssueSchema = new Schema(
 			required: true,
 			maxlength: MAX_SUMMARY_LENGTH
 		},
+		reporter: {
+			type: Schema.ObjectId,
+			ref: "User",
+			required: true
+		},
 		priority: {
 			type: String,
 			enum: [
