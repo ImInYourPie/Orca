@@ -10,6 +10,7 @@ const {
 	PASSWORD_LENGTH,
 	EMAIL_LENGTH
 } = require("../constants/user.const");
+const { INVALID_EMAIL } = require("../constants/messages");
 
 const Schema = mongoose.Schema;
 
@@ -22,31 +23,36 @@ const UserSchema = new Schema(
 			unique: true,
 			validate: {
 				validator: (value) => validator.isEmail(value),
-				message: "Invalid email"
+				message: INVALID_EMAIL
 			},
-			min: EMAIL_LENGTH.MIN,
-			max: EMAIL_LENGTH.MAX
+			minlength: EMAIL_LENGTH.MIN,
+			maxlength: EMAIL_LENGTH.MAX
+		},
+		avatar: {
+			type: String
 		},
 		password: {
 			type: String,
 			required: true,
 			select: false,
-			min: PASSWORD_LENGTH.MIN
+			minlength: PASSWORD_LENGTH.MIN
 		},
 		name: {
 			first: {
-				type: String,
-				min: 1
+				type: String
 			},
 			last: {
-				type: String,
-				min: 1
+				type: String
 			}
 		}
 	},
-	{ collection: "user", timestamps: true }
+	{ collection: "users", timestamps: true }
 );
 
+/**
+ * Password hashing function
+ * runs on created || password field modified
+ */
 UserSchema.pre("save", function (next) {
 	if (this.isNew || this.isModified("password")) {
 		const document = this;
