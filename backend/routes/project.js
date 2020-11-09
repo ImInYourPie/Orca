@@ -9,6 +9,7 @@ const ProjectsController = require("../controllers/project");
 /** Middleware */
 const passport = require("passport");
 const FormValidator = require("../middleware/validation/form.validator");
+const schema = require("../middleware/validation/schemas/project.schema");
 
 /* GET */
 // All projects
@@ -29,6 +30,7 @@ router.get(
 router.post(
 	"/create",
 	passport.authenticate("jwt", { session: false }),
+	FormValidator(schema),
 	ProjectsController.post
 );
 

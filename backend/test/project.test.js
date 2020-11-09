@@ -121,6 +121,24 @@ describe("Project", () => {
 				})
 				.end((err, res) => {
 					assert.equal(res.status, status.CREATED);
+					assert.property(res.body, "success");
+					assert.property(res.body, "message");
+					done();
+				});
+		});
+
+		it("Should fail to create a project based on empty body, returns 400", (done) => {
+			chai
+				.request(app)
+				.post("/project/create")
+				.set("Authorization", `Bearer ${token}`)
+				.send({}) // empty body || no body
+				.end((err, res) => {
+					console.log(res);
+					assert.equal(res.status, status.BAD_REQUEST);
+					assert.property(res.body, "success");
+					assert.property(res.body, "message");
+					assert.equal(res.body["success"], false);
 					done();
 				});
 		});

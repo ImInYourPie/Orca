@@ -19,6 +19,8 @@ const INVALID_CREDENTIALS = "Email or password is invalid";
 const NO_PROJECTS_FOUND = "No project(s) found";
 const INVALID_PROJECT_BODY = "Invalid project form submited";
 const PROJECT_CREATED = "Project created succesfully";
+const PROJECT_TITLE_REQUIRED = "Project title is required";
+const MAX_DESCRIPTION_LENGTH = "Max description length exceeded";
 
 module.exports = {
 	INVALID_EMAIL,
@@ -30,5 +32,7 @@ module.exports = {
 	INVALID_CREDENTIALS,
 	NO_PROJECTS_FOUND,
 	INVALID_PROJECT_BODY,
-	PROJECT_CREATED
+	PROJECT_CREATED,
+	PROJECT_TITLE_REQUIRED,
+	MAX_DESCRIPTION_LENGTH
 };
