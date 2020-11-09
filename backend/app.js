@@ -24,6 +24,7 @@ const { applyPassportStrategy } = require("./config/passport");
  */
 const userRouter = require("./routes/user");
 const tokenRouter = require("./routes/token");
+const projectRouter = require("./routes/project");
 
 const app = express();
 
@@ -67,5 +68,6 @@ app.use(express.static(path.join(__dirname, "public")));
  */
 app.use("/user", userRouter);
 app.use("/token", tokenRouter);
+app.use("/project", projectRouter);
 
 module.exports = app;

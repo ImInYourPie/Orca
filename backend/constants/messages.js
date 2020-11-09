@@ -1,4 +1,4 @@
-/** Registration messages */
+/*Registration messages */
 
 // Email
 const INVALID_EMAIL = "Invalid email submited";
@@ -12,8 +12,13 @@ const EMPTY_PASSWORD = "Password is a required field";
 const USER_CREATED = "User has been created with success";
 const USER_ALREADY_EXISTS = "Email is already registered";
 
-/** Login messages */
+// Login
 const INVALID_CREDENTIALS = "Email or password is invalid";
+
+// Project
+const NO_PROJECTS_FOUND = "No project(s) found";
+const INVALID_PROJECT_BODY = "Invalid project form submited";
+const PROJECT_CREATED = "Project created succesfully";
 
 module.exports = {
 	INVALID_EMAIL,
@@ -22,5 +27,8 @@ module.exports = {
 	EMPTY_PASSWORD,
 	USER_CREATED,
 	USER_ALREADY_EXISTS,
-	INVALID_CREDENTIALS
+	INVALID_CREDENTIALS,
+	NO_PROJECTS_FOUND,
+	INVALID_PROJECT_BODY,
+	PROJECT_CREATED
 };

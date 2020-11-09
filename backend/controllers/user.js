@@ -34,7 +34,7 @@ exports.register = async (req, res) => {
 		const newUser = new User(body);
 		newUser.save();
 
-		if (Boolean(newUser))
+		if (newUser)
 			return res
 				.status(status.CREATED)
 				.send({ success: true, message: messages.USER_CREATED });

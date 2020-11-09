@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 /** Import child schemas */
-const ColumnModel = require("./collumn.model");
+const ColumnModel = require("./column.model");
 const IssueModel = require("./issue.model");
 
 /** Constants */
