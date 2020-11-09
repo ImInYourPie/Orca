@@ -134,7 +134,6 @@ describe("Project", () => {
 				.set("Authorization", `Bearer ${token}`)
 				.send({}) // empty body || no body
 				.end((err, res) => {
-					console.log(res);
 					assert.equal(res.status, status.BAD_REQUEST);
 					assert.property(res.body, "success");
 					assert.property(res.body, "message");

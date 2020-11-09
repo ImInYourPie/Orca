@@ -6,7 +6,7 @@ const { Strategy, ExtractJwt } = require("passport-jwt");
 const User = require("../models/user.model");
 
 /**
- *
+ * Passport config setup with jwt strategy
  * @param {*} passport
  */
 exports.applyPassportStrategy = (passport) => {
