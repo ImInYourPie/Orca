@@ -18,7 +18,7 @@ chai.use(chaiHttp);
 
 describe("Users", () => {
 	before((done) => {
-		User.deleteMany({}, async () => {
+		User.deleteMany({}, () => {
 			done();
 		});
 	});
