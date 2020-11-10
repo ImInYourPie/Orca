@@ -19,6 +19,7 @@ describe("Token", () => {
 		});
 	});
 
+	/***** POST *****/
 	describe("/POST Token", () => {
 		before((done) => {
 			const testUser = {

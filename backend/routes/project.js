@@ -34,4 +34,12 @@ router.post(
 	ProjectsController.post
 );
 
+/* PUT */
+router.put(
+	"/:id/update",
+	passport.authenticate("jwt", { session: false }),
+	FormValidator(schema),
+	ProjectsController.put
+);
+
 module.exports = router;

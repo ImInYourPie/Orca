@@ -17,10 +17,15 @@ const INVALID_CREDENTIALS = "Email or password is invalid";
 
 // Project
 const NO_PROJECTS_FOUND = "No project(s) found";
+const NO_PROJECT_WITH_ID_FOUND = "No project with given id found";
 const INVALID_PROJECT_BODY = "Invalid project form submited";
 const PROJECT_CREATED = "Project created succesfully";
 const PROJECT_TITLE_REQUIRED = "Project title is required";
 const MAX_DESCRIPTION_LENGTH = "Max description length exceeded";
+const PROJECT_UPDATED = "Project updated succesfully";
+
+// ID
+const BAD_ID = "id is not a valid ObjectId";
 
 module.exports = {
 	INVALID_EMAIL,
@@ -31,8 +36,11 @@ module.exports = {
 	USER_ALREADY_EXISTS,
 	INVALID_CREDENTIALS,
 	NO_PROJECTS_FOUND,
+	NO_PROJECT_WITH_ID_FOUND,
 	INVALID_PROJECT_BODY,
 	PROJECT_CREATED,
 	PROJECT_TITLE_REQUIRED,
-	MAX_DESCRIPTION_LENGTH
+	MAX_DESCRIPTION_LENGTH,
+	PROJECT_UPDATED,
+	BAD_ID
 };

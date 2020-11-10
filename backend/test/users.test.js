@@ -23,6 +23,7 @@ describe("Users", () => {
 		});
 	});
 
+	/***** GET *****/
 	describe("/GET User", async () => {
 		let testUser = {};
 		before((done) => {
@@ -63,6 +64,7 @@ describe("Users", () => {
 		});
 	});
 
+	/***** POST *****/
 	describe("/POST User", () => {
 		it("Should return invalid email with 400", (done) => {
 			chai

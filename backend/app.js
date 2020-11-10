@@ -50,7 +50,7 @@ mongoose.connect(connectionString, {
 });
 mongoose.set("useCreateIndex", true);
 
-if (!isProd) mongoose.set("debug", true);
+if (!isProd && !isTest) mongoose.set("debug", true);
 
 /**
  * Libraries usage

@@ -1,5 +1,6 @@
 /* Utilities declaration */
 const status = require("http-status");
+const { Types } = require("mongoose");
 const messages = require("../constants/messages");
 
 // Models
@@ -52,6 +53,37 @@ exports.post = async (req, res) => {
 		return res
 			.status(status.CREATED)
 			.send({ success: true, message: messages.PROJECT_CREATED });
+	} catch (error) {
+		return res
+			.status(status.INTERNAL_SERVER_ERROR)
+			.send({ success: false, message: status["500_MESSAGE"] });
+	}
+};
+
+exports.put = async (req, res) => {
+	try {
+		const { body } = req;
+		const { id } = req.params;
+
+		const isValidId = Types.ObjectId.isValid(id);
+
+		if (!isValidId)
+			return res
+				.status(status.BAD_REQUEST)
+				.send({ success: false, message: messages.BAD_ID });
+
+		const project = await Project.findByIdAndUpdate(id, body, {
+			useFindAndModify: true
+		});
+
+		if (!project)
+			return res
+				.status(status.NOT_FOUND)
+				.send({ success: false, message: messages.NO_PROJECT_WITH_ID_FOUND });
+
+		return res
+			.status(status.OK)
+			.send({ success: true, message: messages.PROJECT_UPDATED });
 	} catch (error) {
 		return res
 			.status(status.INTERNAL_SERVER_ERROR)
